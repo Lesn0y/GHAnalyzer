@@ -1,12 +1,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.lesnoy</groupId>
-  <artifactId>GutHubAnalyzer</artifactId>
+  <artifactId>GitHubAnalyzer</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>GutHubAnalyzer Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
   <properties>
     <spring.version>6.1.8</spring.version>
     <jackson.version>2.15.4</jackson.version>
@@ -24,6 +26,11 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-webmvc</artifactId>
+      <version>${spring.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webflux</artifactId>
       <version>${spring.version}</version>
     </dependency>
 
@@ -56,7 +63,7 @@
   </dependencies>
 
   <build>
-    <finalName>GoogleApiBook</finalName>
+    <finalName>GHAnalyzer</finalName>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
