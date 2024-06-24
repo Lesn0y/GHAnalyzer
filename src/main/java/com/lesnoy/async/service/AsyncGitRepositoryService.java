@@ -21,8 +21,8 @@ public class AsyncGitRepositoryService {
     }
 
     public Flux<GHRepDTO> getRepositoriesByLanguage(String language) {
-        return Flux.range(0, 10)
-                .flatMap(i -> fetchRepositoriesByLanguage(language))
+        return Flux.range(1, 11)
+                .flatMap(i -> fetchRepositoriesByLanguage(language, i))
                 .doOnNext(i -> log.info("Fetching repository: " + i.getRepositories().size()))
                 .subscribeOn(Schedulers.parallel());
     }
@@ -49,9 +49,9 @@ public class AsyncGitRepositoryService {
                 });
     }
 
-    private Mono<GHRepDTO> fetchRepositoriesByLanguage(String language) {
+    private Mono<GHRepDTO> fetchRepositoriesByLanguage(String language, int page) {
         return webClient.get()
-                .uri("/search/repositories?q=language:" + language)
+                .uri("/search/repositories?q=language:" + language + "&page=" + page)
                 .retrieve()
                 .bodyToMono(GHRepDTO.class)
                 .subscribeOn(Schedulers.boundedElastic())

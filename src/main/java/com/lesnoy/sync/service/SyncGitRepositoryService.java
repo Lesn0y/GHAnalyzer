@@ -22,9 +22,9 @@ public class SyncGitRepositoryService {
 
     public List<GHRepository> getRepositoriesByLanguage(String language) {
         List<GHRepository> repositories = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 1; i < 11; i++) {
             GHRepDTO repDTO = restTemplate
-                    .getForObject(BASE_URL + "/search/repositories?q=language:" + language, GHRepDTO.class);
+                    .getForObject(BASE_URL + "/search/repositories?q=language:" + language + "&page=" + i, GHRepDTO.class);
             if (repDTO != null && !repDTO.getRepositories().isEmpty()) {
                 repositories.addAll(repDTO.getRepositories());
             }
