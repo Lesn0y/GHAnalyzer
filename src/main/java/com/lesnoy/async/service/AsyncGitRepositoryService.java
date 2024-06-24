@@ -11,12 +11,12 @@ import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
 @Service
-public class GitRepositoryService {
+public class AsyncGitRepositoryService {
 
-    private static final Log log = LogFactory.getLog(GitRepositoryService.class);
+    private static final Log log = LogFactory.getLog(AsyncGitRepositoryService.class);
     private final WebClient webClient;
 
-    public GitRepositoryService(WebClient webClient) {
+    public AsyncGitRepositoryService(WebClient webClient) {
         this.webClient = webClient;
     }
 
