@@ -1,7 +1,7 @@
 package com.lesnoy.async.controller;
 
 import com.lesnoy.dto.GHRepDTO;
-import com.lesnoy.async.service.GitRepositoryService;
+import com.lesnoy.async.service.AsyncGitRepositoryService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,11 +12,11 @@ import reactor.core.publisher.Flux;
 
 @RestController
 @RequestMapping(value = "/api/v1/rep", produces = MediaType.APPLICATION_JSON_VALUE)
-public class RepAsyncController {
+public class AsyncRepController {
 
-    private final GitRepositoryService ghService;
+    private final AsyncGitRepositoryService ghService;
 
-    public RepAsyncController(GitRepositoryService ghService) {
+    public AsyncRepController(AsyncGitRepositoryService ghService) {
         this.ghService = ghService;
     }
 
