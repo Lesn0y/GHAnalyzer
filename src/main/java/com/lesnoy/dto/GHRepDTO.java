@@ -1,7 +1,7 @@
-package com.lesnoy.async.dto;
+package com.lesnoy.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.lesnoy.async.model.GHRepository;
+import com.lesnoy.model.GHRepository;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.lesnoy.async.service;
 
-import com.lesnoy.async.dto.GHRepDTO;
-import com.lesnoy.async.model.GHRepository;
+import com.lesnoy.dto.GHRepDTO;
+import com.lesnoy.model.GHRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;

@@ -1,8 +1,8 @@
-package com.lesnoy.async.model;
+package com.lesnoy.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.lesnoy.async.config.GHRepositoryDeserializer;
+import com.lesnoy.config.GHRepositoryDeserializer;
 
 import java.util.Date;
 

@@ -1,6 +1,6 @@
 package com.lesnoy.async.controller;
 
-import com.lesnoy.async.dto.GHRepDTO;
+import com.lesnoy.dto.GHRepDTO;
 import com.lesnoy.async.service.GitRepositoryService;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;

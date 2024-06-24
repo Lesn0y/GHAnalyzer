@@ -1,11 +1,11 @@
-package com.lesnoy.async.config;
+package com.lesnoy.config;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.lesnoy.async.model.GHRepository;
+import com.lesnoy.model.GHRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

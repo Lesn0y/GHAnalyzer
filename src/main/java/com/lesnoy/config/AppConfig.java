@@ -1,4 +1,4 @@
-package com.lesnoy.async.config;
+package com.lesnoy.config;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
