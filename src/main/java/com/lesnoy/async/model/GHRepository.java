@@ -1,14 +1,14 @@
-package com.lesnoy.dto;
+package com.lesnoy.async.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import com.lesnoy.config.GHRepositoryDeserializer;
+import com.lesnoy.async.config.GHRepositoryDeserializer;
 
 import java.util.Date;
 
 @JsonDeserialize(using = GHRepositoryDeserializer.class)
-public class GHRepositoryDTO {
-    private String fullname;
+public class GHRepository {
+    private String fullName;
     private String repUrl;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
     private Date created;
@@ -16,23 +16,23 @@ public class GHRepositoryDTO {
     private Date updated;
     private String language;
 
-    public GHRepositoryDTO() {
+    public GHRepository() {
     }
 
-    public GHRepositoryDTO(String fullname, String repUrl, Date created, Date updated, String language) {
-        this.fullname = fullname;
+    public GHRepository(String fullName, String repUrl, Date created, Date updated, String language) {
+        this.fullName = fullName;
         this.repUrl = repUrl;
         this.created = created;
         this.updated = updated;
         this.language = language;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public String getRepUrl() {

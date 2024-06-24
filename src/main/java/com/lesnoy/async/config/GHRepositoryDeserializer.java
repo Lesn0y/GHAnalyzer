@@ -1,11 +1,11 @@
-package com.lesnoy.config;
+package com.lesnoy.async.config;
 
 import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer;
-import com.lesnoy.dto.GHRepositoryDTO;
+import com.lesnoy.async.model.GHRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -14,7 +14,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class GHRepositoryDeserializer extends StdDeserializer<GHRepositoryDTO> {
+public class GHRepositoryDeserializer extends StdDeserializer<GHRepository> {
 
     private static final Log log = LogFactory.getLog(GHRepositoryDeserializer.class);
 
@@ -27,9 +27,9 @@ public class GHRepositoryDeserializer extends StdDeserializer<GHRepositoryDTO> {
     }
 
     @Override
-    public GHRepositoryDTO deserialize(JsonParser jp, DeserializationContext context) throws IOException, JacksonException {
+    public GHRepository deserialize(JsonParser jp, DeserializationContext context) throws IOException, JacksonException {
         JsonNode node = jp.getCodec().readTree(jp);
-        String fullname = node.get("full_name").asText();
+        String fullName = node.get("full_name").asText();
         String repUrl = node.get("url").asText();
         String language = node.get("language").asText();
         Date createdAt = null;
@@ -42,6 +42,6 @@ public class GHRepositoryDeserializer extends StdDeserializer<GHRepositoryDTO> {
             log.error(e);
         }
 
-        return new GHRepositoryDTO(fullname, repUrl, createdAt, updatedAt, language);
+        return new GHRepository(fullName, repUrl, createdAt, updatedAt, language);
     }
 }

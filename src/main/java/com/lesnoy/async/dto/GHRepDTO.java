@@ -1,19 +1,20 @@
-package com.lesnoy.dto;
+package com.lesnoy.async.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.lesnoy.async.model.GHRepository;
 
 import java.util.List;
 
-public class GHRepositoryCollection {
+public class GHRepDTO {
     @JsonProperty("total_count")
     private int count;
     @JsonProperty("items")
-    private List<GHRepositoryDTO> repositories;
+    private List<GHRepository> repositories;
 
-    public GHRepositoryCollection() {
+    public GHRepDTO() {
     }
 
-    public GHRepositoryCollection(int count, List<GHRepositoryDTO> repositories) {
+    public GHRepDTO(int count, List<GHRepository> repositories) {
         this.count = count;
         this.repositories = repositories;
     }
@@ -26,11 +27,11 @@ public class GHRepositoryCollection {
         this.count = count;
     }
 
-    public List<GHRepositoryDTO> getRepositories() {
+    public List<GHRepository> getRepositories() {
         return repositories;
     }
 
-    public void setRepositories(List<GHRepositoryDTO> repositories) {
+    public void setRepositories(List<GHRepository> repositories) {
         this.repositories = repositories;
     }
 }
