@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
 @RestController
-@RequestMapping(value = "/api/v1/rep", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/api/v1/async/rep", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AsyncRepController {
 
     private final AsyncGitRepositoryService ghService;
