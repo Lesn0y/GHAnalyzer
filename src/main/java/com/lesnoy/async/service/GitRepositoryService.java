@@ -1,11 +1,12 @@
-package com.lesnoy.service;
+package com.lesnoy.async.service;
 
-import com.lesnoy.dto.GHRepDTO;
-import com.lesnoy.model.GHRepository;
+import com.lesnoy.async.dto.GHRepDTO;
+import com.lesnoy.async.model.GHRepository;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
+import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
 
@@ -19,13 +20,11 @@ public class GitRepositoryService {
         this.webClient = webClient;
     }
 
-    public Mono<GHRepDTO> getRepositoriesByLanguage(String language) {
-        return webClient.get()
-                .uri("/search/repositories?q=language:" + language)
-                .retrieve()
-                .bodyToMono(GHRepDTO.class)
-                .subscribeOn(Schedulers.boundedElastic())
-                .doOnError(throwable -> log.error("Error fetching repositories", throwable));
+    public Flux<GHRepDTO> getRepositoriesByLanguage(String language) {
+        return Flux.range(0, 10)
+                .flatMap(i -> fetchRepositoriesByLanguage(language))
+                .doOnNext(i -> log.info("Fetching repository: " + i.getRepositories().size()))
+                .subscribeOn(Schedulers.parallel());
     }
 
     public Mono<GHRepository> getRepositoryByFullName(String fullName) {
@@ -48,5 +47,14 @@ public class GitRepositoryService {
                     log.error("Error fetching content", throwable);
                     return Mono.empty();
                 });
+    }
+
+    private Mono<GHRepDTO> fetchRepositoriesByLanguage(String language) {
+        return webClient.get()
+                .uri("/search/repositories?q=language:" + language)
+                .retrieve()
+                .bodyToMono(GHRepDTO.class)
+                .subscribeOn(Schedulers.boundedElastic())
+                .doOnError(throwable -> log.error("Error fetching repositories", throwable));
     }
 }
